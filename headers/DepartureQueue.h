@@ -38,13 +38,18 @@ public:
 				// compute the time the plane has been waiting at the front
 				if (clock - plane->ready_takeoff_time > departure_time) {
 					// plane has waited long enough
-					// FIXME: remove plane from departure queue
+					/////////////////////// FIXME: remove plane from departure queue
+					the_queue.pop();
 					
 
-					// FIXME: calculate the wait time
+					////////////////// FIXME: calculate the wait time
+					int time_stamp = plane->arrival_time;
+					int wait_time = (clock - time_stamp);
 					
 
-					// FIXME: update total_wait and num_served
+					/////////////////// FIXME: update total_wait and num_served
+					num_served++;
+					total_wait += wait_time;//////////////////////
 					
 
 

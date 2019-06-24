@@ -34,6 +34,10 @@ public:
 
 	void update(int clock) 
 	{
+		if(my_random.next_double() < arrival_rate) {
+			the_queue.push(new Plane(clock));
+		}
+		/////////////////////////////
 		/* FIXME:  add a new plane into the landing queue based on the arrival_rate
 		   HINT: my_random.next_double() returns a random value between 0 and 1.
 		         Read how the the simulation described in the book does this 

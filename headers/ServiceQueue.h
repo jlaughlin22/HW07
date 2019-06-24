@@ -44,7 +44,8 @@ public:
 
 			// check if a plane is ready to move from the service queue to the departure queue
 			if ((clock - plane->start_service_time) > plane->service_time) {  
-				// FIXME: remove plane from the service queue
+				//////////////// FIXME: remove plane from the service queue
+				the_queue.pop();
 				
 
 				// FIXME: update the enter_departure_time attribute for the plane
@@ -65,8 +66,13 @@ public:
 
 				// FIXME: calculate the wait time of the plane in the landing queue
 				
+				int time_stamp = plane->arrival_time;
+				int wait_time = (clock - time_stamp);
 
-				// FIXME: update total_wait and num_served for the landing queue
+				///////////////////////// FIXME: update total_wait and num_served for the landing queue
+				landing_queue->num_served++;
+				landing_queue->total_wait += wait_time;
+			    
 				
 
 
