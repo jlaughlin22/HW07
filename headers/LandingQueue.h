@@ -34,10 +34,9 @@ public:
 
 	void update(int clock) 
 	{
-		if(my_random.next_double() < arrival_rate) {
-			the_queue.push(new Plane(clock));
+		if(my_random.next_double() < arrival_rate) {//if the random num is less then the arrival rate of planes then a new plan can be added
+			the_queue.push(new Plane(clock));//add new plane that wants to land
 		}
-
 	}
 
 	friend class ServiceQueue;

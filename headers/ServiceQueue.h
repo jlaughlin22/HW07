@@ -44,9 +44,9 @@ public:
 
 			// check if a plane is ready to move from the service queue to the departure queue
 			if ((clock - plane->start_service_time) > plane->service_time) {  
-				the_queue.pop();
-				plane->enter_departure_time = clock;
-				departure_queue->the_queue.push(plane);
+				the_queue.pop();//remove plane from queue
+				plane->enter_departure_time = clock;//updata the enter_departure_time
+				departure_queue->the_queue.push(plane);//add plane to departure queue
 			}
 		}
 
@@ -57,13 +57,17 @@ public:
 			if (!landing_queue->the_queue.empty()) {
 
 				Plane *plane = landing_queue->the_queue.front();
-				landing_queue->the_queue.pop();
+				landing_queue->the_queue.pop();//remove plane from landing_queue
 				double wait_time = (clock - plane->arrival_time);//wait time is time from landing to service
-				landing_queue->num_served++;
-				landing_queue->total_wait += wait_time;
-				plane->start_service_time = clock;
+				landing_queue->num_served++;//increment the number of planes served from landing_queue
+				landing_queue->total_wait += wait_time;//add the wait_time from landing_queue to its overall total_wait
+				plane->start_service_time = clock;//update start_service_time
+
+				// calculate random service time between low and high
 				plane->service_time = ( my_random.next_int( max_service_time - min_service_time ) ) + min_service_time;
-				the_queue.push(plane);
+
+
+				the_queue.push(plane);//add plane to queue
 				
 			}
 		}

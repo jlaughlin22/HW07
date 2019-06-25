@@ -38,10 +38,10 @@ public:
 				// compute the time the plane has been waiting at the front
 				if (clock - plane->ready_takeoff_time > departure_time) {
 					// plane has waited long enough
-					the_queue.pop();
+					the_queue.pop();//remove plane from queue
 					double wait_time = (clock - plane->enter_departure_time);//wait time is time within departure queue
-					num_served++;
-					total_wait += wait_time;
+					num_served++;//increments number of planes served
+					total_wait += wait_time;//add the wait time to the total_wait for the queue
 					// take off!   goodbye plane
 					delete plane;
 				}
