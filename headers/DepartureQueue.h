@@ -43,7 +43,7 @@ public:
 					
 
 					////////////////// FIXME: calculate the wait time
-					double wait_time = (clock - plane->arrival_time);
+					double wait_time = (clock - plane->enter_departure_time);
 					
 
 					/////////////////// FIXME: update total_wait and num_served
